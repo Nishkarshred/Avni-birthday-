@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday, Avni!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fce4ec;
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #880e4f;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 3em;
+      margin-top: 1em;
+    }
+    p {
+      font-size: 1.5em;
+    }
+    .hearts, .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .heart, .star {
+      position: absolute;
+      color: #ec407a;
+      animation: floatUp 8s infinite ease-in;
+      font-size: 1.5em;
+      opacity: 0.8;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0.8; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Happy Birthday, Avni! 🌟❤️</h1>
+  <p>From: I don't know</p>
+  <p>Wishing you the sweetest birthday filled with love, laughter, and endless joy!</p>
+
+  <div class="hearts"></div>
+  <div class="stars"></div>
+
+  <script>
+    const heartsDiv = document.querySelector('.hearts');
+    const starsDiv = document.querySelector('.stars');
+
+    function createSymbol(container, symbol) {
+      const e = document.createElement('div');
+      e.className = symbol === '❤️' ? 'heart' : 'star';
+      e.textContent = symbol;
+      e.style.left = Math.random() * 100 + 'vw';
+      e.style.fontSize = (Math.random() * 1 + 1.5) + 'em';
+      e.style.animationDuration = (5 + Math.random() * 5) + 's';
+      container.appendChild(e);
+      setTimeout(() => container.removeChild(e), 10000);
+    }
+
+    setInterval(() => createSymbol(heartsDiv, '❤️'), 400);
+    setInterval(() => createSymbol(starsDiv, '🌟'), 500);
+  </script>
+</body>
+</html>
